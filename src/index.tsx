@@ -3,14 +3,19 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { TodoList } from "./stores/todo-list";
+import { StoreProvider } from "./helpers/store-provider";
+
+const todoList = new TodoList([]);
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <StoreProvider value={todoList}>
+    <App/>
+  </StoreProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
