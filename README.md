@@ -22,4 +22,6 @@
 
 ## Ссылки:
 
+- [Ссылка на деплой](https://todo-app-three-ochre.vercel.app/)
+
 - [По вопросам доработки сайта](https://t.me/t.zlv)
