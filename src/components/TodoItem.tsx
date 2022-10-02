@@ -1,22 +1,20 @@
-import React, { FC } from "react";
-import { ITodo } from "../types/data"
-import styles from "../styles/index.module.scss"
+import React from "react";
+import styles from "../styles/index.module.scss";
+import { IProps } from "../types/data";
+import { useStore } from "../helpers/use-store";
 
-interface ITodoItem extends ITodo {
-	removeTodo: (id: number) => void;
-	completeTodo: (id: number) => void;
- }
+const TodoItem = ({todo}: IProps) => {
+	const todoList = useStore();
 
-const TodoItem: FC<ITodoItem> = (props) => {
-	const { id, title, complete, removeTodo, completeTodo } = props;
-
-	return <div className={styles.task}>
-		<div>{title}</div>
+	return (
+	<div className={styles.task}>
+		<div>{todo.title}</div>
 		<div>
-			<input type="checkbox" checked={complete} onChange={() => completeTodo(id)}></input>
-		<button onClick={() => removeTodo(id)}>X</button>
+			<input type="checkbox" onChange={todo.toggleIsDone} defaultChecked={todo.complete}></input>
+			<button className={styles.removeButton} onClick={() => todoList.removeTodo(todo)}>X</button>
 		</div>
 	</div>
-}
+	)
+};
 
 export default TodoItem;

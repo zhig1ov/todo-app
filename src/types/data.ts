@@ -1,11 +1,5 @@
-export interface ITodo {
-  id: number;
-  title: string;
-  complete: boolean;
-}
+import TodoItemClass  from "../stores/todo-item";
 
-export interface ITodoList {
-  items: ITodo[];
-  removeTodo: (id: number) => void;
-	completeTodo: (id: number) => void;
+export interface IProps {
+  todo: TodoItemClass;
 }
